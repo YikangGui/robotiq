@@ -258,12 +258,12 @@ class PickAndPlace(object):
             sleep(0.05)
         current_pose = group.get_current_pose().pose
         allow_replanning = True
-        planning_time = 5
+        planning_time = 0.5
         if current_pose.position.y > target_location_y and current_pose.position.y < target_location_y + 0.005:
             print "Now performing dip"
             dip = self.go_to_pose_goal(q[0], q[1], q[2], q[3], target_location_x - 0.03,
                                     target_location_y + 0.02, #accounting for tolerance error
-                                    current_pose.position.z - 0.075, #This is where we dip
+                                    current_pose.position.z - 0.0745, #This is where we dip
                                     allow_replanning, planning_time)
             # rospy.sleep(0.05)
             
@@ -326,12 +326,8 @@ class PickAndPlace(object):
         current_pose = group.get_current_pose().pose
         allow_replanning = True
         waiting = False
-<<<<<<< HEAD
-        planning_time = 0.025
-=======
         attempts = 0
-        planning_time = MOTION_SAMPLE_TIME
->>>>>>> f3d72034df61da96ad488c3d046576d67106f671
+        planning_time = 0.03
         print "Current z pose: ",current_pose.position.z
         while not waiting:
             waiting = self.go_to_pose_goal(q[0], q[1], q[2], q[3], target_location_x,
@@ -610,11 +606,11 @@ class PickAndPlace(object):
         while rolls < 2:
             rolling = self.go_to_pose_goal(new_q[0], new_q[1], new_q[2], new_q[3], target_location_x - 0.05,
                                         target_location_y + 0.1, # Going to hover location .1 from the onion
-                                        current_pose.position.z - 0.022,
+                                        current_pose.position.z + 0.033,
                                         allow_replanning, planning_time)
             rolling1 = self.go_to_pose_goal(new_q[0], new_q[1], new_q[2], new_q[3], target_location_x - 0.05,
                                         target_location_y - 0.1, # Going to hover location .1 from the onion
-                                        current_pose.position.z - 0.022,
+                                        current_pose.position.z + 0.033,
                                         allow_replanning, planning_time)
             rolls = rolls + 1
         print("Finished rolling!") 
