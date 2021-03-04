@@ -74,4 +74,3 @@ add_dependencies(robotiq_2f_gripper_ethercat_node robotiq_2f_gripper_control_gen
 
 install(PROGRAMS nodes/Robotiq2FGripperSimpleController.py nodes/Robotiq2FGripperStatusListener.py
     nodes/Robotiq2FGripperTcpNode.py nodes/Robotiq2FGripperRtuNode.py DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION})
-
