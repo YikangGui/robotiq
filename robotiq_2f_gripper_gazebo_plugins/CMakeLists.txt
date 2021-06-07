@@ -16,9 +16,9 @@ link_directories(
   ${GAZEBO_LIBRARY_DIRS}
 )
 
-# generate_dynamic_reconfigure_options(
-#   cfg/PID.cfg
-# )
+generate_dynamic_reconfigure_options(
+   cfg/Robotiq2fGripper.cfg
+)
 
 catkin_package(
    DEPENDS gazebo_plugins gazebo_ros robotiq_2f_gripper_control roscpp dynamic_reconfigure
